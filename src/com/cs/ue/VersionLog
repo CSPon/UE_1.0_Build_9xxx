@@ -1,0 +1,19 @@
+/************************************
+*	Uniform Engine 1 NX (1.0.9XXX)	*
+*************************************/
+
+Change Log
+
+Dec. 7th 2014
+* Changed Z-Buffer depth from (1, -1) to (Integer.MAX, Integer.MIN)
++ Added Vector2d, Vector2f, and Vector2i classes
+Dec. 8th 2014
++ Added Vector3d class
+Dec. 26th 2014
+* Modified post render so that the frame rate can be vary.
+Dec. 29th 2014
+* Changed tile from GL_QUADS to GL_TRIANGLES.
++ Added new function where region/block is automatically focused based on mouse position and world offset.
+- Removed WASD keys from basic movement input function; developers can define them in their main class anyway;
+* Modified openGL setup function to take user input for Z-Depth Buffer.
+- Removed UDisplay class (moved initialize method to ScreenM's constructor)  

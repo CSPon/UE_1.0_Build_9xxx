@@ -91,7 +91,7 @@ public class Sample extends UniformEngine
 	@Override
 	public void render()
 	{	
-		noiseTest(0.5f);
+		//noiseTest(0.05f);
 		
 		if(world.isWorldCreated())
 			world.render(16, getScrWidth(), getScrHeight());

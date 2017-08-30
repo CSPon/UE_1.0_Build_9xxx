@@ -21,7 +21,7 @@ public class Sample extends UniformEngine
 	public Sample(String[] args)
 	{
 		init(args);
-		setBackgroundColor(0, 0, 0);
+		setBackgroundColor(66.f/255.f, 134.f/255.f, 234.f/255.f);
 		setDepthBuffer(-5, 5);
 		create();
 		

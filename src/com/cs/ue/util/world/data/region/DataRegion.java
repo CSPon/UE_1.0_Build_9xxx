@@ -60,7 +60,7 @@ public class DataRegion implements _DataRegion
 //				//checkEdges(region[i][j]);
 //				_checkEdges(region[i][j]);
 //			} // End Tile Edge
-		
+//		
 		for(int i = 0; i < region.length; i++)
 			for(int j = 0; j < region.length; j++)
 			{
@@ -108,6 +108,13 @@ public class DataRegion implements _DataRegion
 		return tiles;
 	}
 	
+	private int getHeight(DataTile a, DataTile b)
+	{
+		if(a != null &&  b != null)
+			return a.getHeight() - b.getHeight();
+		else return 0;
+	}
+	
 	private void _checkEdges(DataTile tile)
 	{
 		// Recursive method
@@ -125,209 +132,63 @@ public class DataRegion implements _DataRegion
 				// Recursive into tile (i,j)
 		byte[] corners = tile.corners;
 		
-		if(tiles[0][2] != null)
+		if(getHeight(tiles[0][1], tile) > 0)
 		{
-			int diff = tiles[0][2].getHeight() - tile.getHeight();
-			if(diff > 1)
-			{
-				corners[1] = -1;
-				tiles[0][2].corners[3] = 1;
-			}
-			if(diff == 1)
-			{
-				corners[1] = -1;
-			}
-			if(diff == -1)
-			{
-				corners[1] = 1;
-			}
-			if(diff < -1)
-			{
-				corners[1] = 1;
-				tiles[0][2].corners[3] = -1;
-			}
+			
 		}
-		if(tiles[2][2] != null)
-		{
-			int diff = tiles[2][2].getHeight() - tile.getHeight();
-			if(diff == -1)
-			{
-				corners[2] = 1;
-			}
-			else if(diff == 1)
-			{
-				corners[2] = -1;
-			}
-		}
-		if(tiles[1][2] != null)
-		{
-			int diff = tiles[1][2].getHeight() - tile.getHeight();
-			if(diff == -1)
-			{
-				corners[1] = 1;
-				corners[2] = 1;
-			}
-			else if(diff == 1)
-			{
-				corners[1] = -1;
-				corners[2] = -1;
-			}
-			if(diff > 1)
-			{
-				corners[1] = -1;
-				corners[2] = -1;
-				tiles[1][2].corners[0] = 1;
-				tiles[1][2].corners[3] = 1;
-			}
-			if(diff < -1)
-			{
-				corners[1] = 1;
-				corners[2] = 1;
-				tiles[1][2].corners[0] = -1;
-				tiles[1][2].corners[3] = -1;
-			}
-		}
-		
-		if(tiles[0][0] != null)
-		{
-			int diff = tiles[0][0].getHeight() - tile.getHeight();
-			if(diff > 1)
-			{
-				corners[0] = -1;
-				tiles[0][0].corners[2] = 1;
-			}
-			if(diff == 1)
-			{
-				corners[0] = -1;
-			}
-			if(diff == -1)
-			{
-				corners[0] = 1;
-			}
-			if(diff < -1)
-			{
-				corners[0] = 1;
-				tiles[0][0].corners[2] = -1;
-			}
-		}
-		if(tiles[0][1] != null)
-		{
-			int diff = tiles[0][1].getHeight() - tile.getHeight();
-			if(diff > 1)
-			{
-				corners[0] = -1;
-				corners[1] = -1;
-				tiles[0][1].corners[2] = 1;
-				tiles[0][1].corners[3] = 1;
-			}
-			if(diff == 1)
-			{
-				corners[0] = -1;
-				corners[1] = -1;
-			}
-			if(diff == -1)
-			{
-				corners[0] = 1;
-				corners[1] = 1;
-			}
-			if(diff < -1)
-			{
-				corners[0] = 1;
-				corners[1] = 1;
-				tiles[0][1].corners[2] = -1;
-				tiles[0][1].corners[3] = -1;
-			}
-		}
-		if(tiles[1][0] != null)
-		{
-			int diff = tiles[1][0].getHeight() - tile.getHeight();
-			if(diff > 1)
-			{
-				corners[0] = -1;
-				corners[3] = -1;
-				tiles[1][0].corners[1] = 1;
-				tiles[1][0].corners[2] = 1;
-			}
-			if(diff == 1)
-			{
-				corners[0] = -1;
-				corners[3] = -1;
-			}
-			if(diff == -1)
-			{
-				corners[0] = 1;
-				corners[3] = 1;
-			}
-			if(diff < -1)
-			{
-				corners[0] = 1;
-				corners[3] = 1;
-				tiles[1][0].corners[1] = -1;
-				tiles[1][0].corners[2] = -1;
-			}
-		}
-		if(tiles[2][0] != null)
-		{
-			int diff = tiles[2][0].getHeight() - tile.getHeight();
-			if(diff > 1)
-			{
-				corners[3] = -1;
-				tiles[2][0].corners[1] = 1;
-			}
-			if(diff == 1)
-			{
-				corners[3] = -1;
-			}
-			if(diff == -1)
-			{
-				corners[3] = 1;
-			}
-			if(diff < -1)
-			{
-				corners[3] = 1;
-				tiles[2][0].corners[1] = -1;
-			}
-		}
-		if(tiles[2][1] != null)
-		{
-			int diff = tiles[2][1].getHeight() - tile.getHeight();
-			if(diff > 1)
-			{
-				corners[2] = -1;
-				corners[3] = -1;
-				tiles[2][1].corners[0] = 1;
-				tiles[2][1].corners[1] = 1;
-			}
-			if(diff == 1)
-			{
-				corners[2] = -1;
-				corners[3] = -1;
-			}
-			if(diff == -1)
-			{
-				corners[2] = 1;
-				corners[3] = 1;
-			}
-			if(diff < -1)
-			{
-				corners[2] = 1;
-				corners[3] = 1;
-				tiles[2][1].corners[0] = -1;
-				tiles[2][1].corners[1] = -1;
-			}
-		}
+//		if(getHeight(tiles[0][0], tile) > 0)
+//			corners[0] = -1;
+//		else if(getHeight(tiles[0][0], tile) < -1)
+//			corners[0] = 1;
+//		
+//		if(getHeight(tiles[2][2], tile) < 0)
+//			corners[2] = 1;
+//		else if(getHeight(tiles[2][2], tile) < -1)
+//			corners[2] = 1;
+//		
+//		if(getHeight(tiles[0][1], tiles[1][2]) > 1)
+//			corners[1] = 0;
+//		else if(getHeight(tiles[0][1], tiles[1][2]) < 1)
+//			corners[1] = 0;
+//		else if(getHeight(tiles[0][2], tile) > 0)
+//			corners[1] = -1;
+//		else if(getHeight(tiles[0][2], tile) < 0)
+//			corners[1] = 1;
+//		else if(getHeight(tiles[0][2], tile) > 1)
+//			corners[1] = -1;
+//		else if(getHeight(tiles[0][2], tile) < -1)
+//			corners[1] = 1;
+//		
+//		if(getHeight(tiles[1][0], tiles[2][1]) > 1)
+//			corners[3] = 0;
+//		else if(getHeight(tiles[1][0], tiles[2][1]) < 1)
+//			corners[3] = 0;
+//		else if(getHeight(tiles[2][0], tile) > 0)
+//			corners[3] = -1;
+//		else if(getHeight(tiles[2][0], tile) < 0)
+//			corners[3] = 1;
+//		else if(getHeight(tiles[2][0], tile) > 1)
+//			corners[3] = -1;
+//		else if(getHeight(tiles[2][0], tile) < -1)
+//			corners[3] = 1;
 		
 		if(corners[0] == 1 && corners[1] == 1 && corners[2] == 1 && corners[3] == 1)
 		{
+			System.out.print("Tile stpped down: " + tile.getRow() + " " + tile.getCol());
+			System.out.println(" Was " + tile.getHeight());
 			tile.setHeight(tile.getHeight() - 1);
-			corners = new byte[4];
+			corners = new byte[]{0, 0, 0, 0};
 			tile.corners = corners;
+			_checkEdges(tile);
 		}
 		else if(corners[0] == -1 && corners[1] == -1 && corners[2] == -1 && corners[3] == -1)
 		{
+			System.out.print("Tile stpped up: " + tile.getRow() + " " + tile.getCol());
+			System.out.println(" Was " + tile.getHeight());
 			tile.setHeight(tile.getHeight() + 1);
-			corners = new byte[4];
+			corners = new byte[]{0, 0, 0, 0};
 			tile.corners = corners;
+			_checkEdges(tile);
 		}
 		else tile.corners = corners;
 	}

@@ -132,10 +132,25 @@ public class DataRegion implements _DataRegion
 				// Recursive into tile (i,j)
 		byte[] corners = tile.corners;
 		
-		if(getHeight(tiles[0][1], tile) > 0)
+		if(getHeight(tiles[0][0], tile) == 0 
+				&& getHeight(tiles[0][1], tile) == 0
+				&& getHeight(tiles[1][0], tile) == 0)
 		{
-			
+			corners[0] = 0;
 		}
+		else if(getHeight(tiles[0][0], tile) == 1 
+				&& getHeight(tiles[0][1], tile) == 1
+				&& getHeight(tiles[1][0], tile) == 1)
+		{
+			corners[0] = -1;
+		}
+		else if(getHeight(tiles[0][0], tile) == -1 
+				&& getHeight(tiles[0][1], tile) == -1
+				&& getHeight(tiles[1][0], tile) == -1)
+		{
+			corners[0] = 1;
+		}
+		
 //		if(getHeight(tiles[0][0], tile) > 0)
 //			corners[0] = -1;
 //		else if(getHeight(tiles[0][0], tile) < -1)
